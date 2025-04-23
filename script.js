@@ -73,6 +73,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 { top: '55.33%', left: '5.7%', width: '43.5%', height: '40.71%' }, // Slot 3 - Adjusted Top, Left, Width
                 { top: '55.33%', left: '50%', width: '43.5%', height: '40.71%' }  // Slot 4 - Adjusted Top, Left changed to 50%, Width
              ]
+        },
+         // --- New Pompompurin Frame Entry (using same positions as Cinnamoroll/My Melody) ---
+        'Pompompurin (1).png': { // Key is the full-size image filename
+            imageUrl: 'images/Pompompurin (1).png', // Path to the full-size Pompompurin frame image
+             // --- Copy the SAME adjusted slot positions from Cinnamoroll/My Melody ---
+             slotPositions: [
+                { top: '13.37%', left: '5.7%', width: '43.5%', height: '40.71%' }, // Slot 1
+                { top: '13.37%', left: '50%', width: '43.5%', height: '40.71%' }, // Slot 2
+                { top: '55.33%', left: '5.7%', width: '43.5%', height: '40.71%' }, // Slot 3
+                { top: '55.33%', left: '50%', width: '43.5%', height: '40.71%' }  // Slot 4
+             ]
+             // --- End copied slot positions ---
         }
         // Add more frame designs as objects here
     };
@@ -102,12 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     photoSlots[index].style.width = pos.width;
 
                     // --- Set the height style based on the frame ---
-                    if (frameValue === 'Cinnamoroll (1).png' || frameValue === 'MyMelody (1).png') {
-                        // For Cinnamoroll/My Melody, set a fixed pixel height for display
-                        photoSlots[index].style.height = '184px';
+                    // Check if the current frame is Cinnamoroll, My Melody, OR Pompompurin
+                    if (frameValue === 'Cinnamoroll (1).png' || frameValue === 'MyMelody (1).png' || frameValue === 'Pompompurin (1).png') {
+                        // For these frames, set a fixed pixel height for display
+                        photoSlots[index].style.height = '184px'; // Your desired fixed height for display
                          console.log(`Applied fixed display height to slot ${index + 1} for ${frameValue}: 184px`);
                     } else {
-                         // For other frames (like Photoism), calculate height based on width for display
+                         // For other frames (like Photoism), calculate height based on width for display (2:3 aspect)
                         const widthPercentage = parseFloat(pos.width); // Get the width percentage as a number
                         const slotWidthPx = (widthPercentage / 100) * containerWidth; // Calculate the slot width in pixels
                         const desiredSlotHeightPx = slotWidthPx * (3 / 2); // Calculate the desired height in pixels (2:3 aspect ratio)
