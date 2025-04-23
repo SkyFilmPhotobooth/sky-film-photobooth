@@ -87,7 +87,7 @@ header {
     width: 100%;
 }
 
-/* --- Restyled H1 (Main Title) back to Pacifico and larger size --- */
+/* Restyled H1 (Main Title) back to Pacifico and larger size */
 header h1 {
     color: white; /* Sky Film text white */
     font-family: 'Pacifico', cursive; /* Restored Pacifico font */
@@ -95,7 +95,6 @@ header h1 {
     font-weight: 400;
     margin-bottom: 15px;
 }
-/* --- End Restyled H1 --- */
 
 header img {
     max-width: 220px;
@@ -103,7 +102,7 @@ header img {
     margin-bottom: 25px;
 }
 
-/* --- Styled ONLY H2 to use Comfortaa and have the same size --- */
+/* Styled ONLY H2 to use Comfortaa and have the same size */
 h2 { /* Removed h1 from this selector */
     font-family: 'Comfortaa', sans-serif; /* Apply Comfortaa font */
     font-size: 2em; /* Set the common font size */
@@ -112,7 +111,6 @@ h2 { /* Removed h1 from this selector */
     margin-top: 0; /* Reset default top margin */
     margin-bottom: 20px; /* Keep specific bottom margin for h2 */
 }
-/* --- End Styled H2 Only --- */
 
 
 main {
@@ -133,7 +131,7 @@ main {
     width: auto;
     max-width: 400px;
     /* Adjust flex properties to manage size in horizontal layout */
-    flex: 1 1 350px; /* Allow to grow/shrink, base size 350px */
+    /* Removed flex: 1 1 350px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,6 +155,8 @@ main {
     display: block;
     width: 100%;
     height: auto;
+    /* --- Mirror the live video horizontally --- */
+    transform: scaleX(-1);
 }
 
 /* Styled Countdown Overlay */
@@ -276,7 +276,7 @@ main {
     margin-top: 0;
     margin-bottom: 30px;
     width: auto;
-    flex: 1 1 350px; /* Allow to grow/shrink, base size 350px */
+    /* Removed flex: 1 1 350px; */
     max-width: 450px; /* Limit the max width of the photo display section */
     display: flex; /* Ensure it's a flex container */
     flex-direction: column; /* Arrange children vertically */
@@ -303,22 +303,31 @@ main {
      aspect-ratio: 1200 / 1800; /* Or 2 / 3 */
 }
 
-/* Styles for Photo Slots (Photos will be behind the frame) */
+/* Styles for Photo Slots (Reverted to basic absolute positioning/overflow hidden) */
 .photo-slot {
     position: absolute; /* Position relative to #capturedImageContainer */
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Removed flexbox, padding-top trick properties */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 0; */
+    /* padding-top: calc(1800 / 1200 * 100%); */
     /* top, left, width, height set by JavaScript */
     z-index: 1; /* Place below the frame image */
 }
 
 .photo-slot img {
     display: block;
+    /* --- Position and size the image to fill the slot --- */
+    position: absolute; /* Position relative to the photo-slot parent */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* --- Mirror the displayed photos horizontally --- */
+    transform: scaleX(-1);
 }
 
 /* Styles for Frame Image (PNG overlay) */
