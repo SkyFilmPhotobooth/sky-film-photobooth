@@ -1,0 +1,346 @@
+/* Apply styles inspired by the Canva website and new requests */
+
+body {
+    font-family: 'Poppins', sans-serif; /* Body font */
+    margin: 0;
+    background-color: #A3C2D1; /* Body background remains blue */
+    color: #333; /* Default body text color */
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden; /* Prevent horizontal scrollbar from cloud animation */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.background-clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.cloud {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    filter: blur(10px);
+    opacity: 0.9;
+}
+
+/* Define different cloud sizes, starting positions, and animations */
+.cloud-1 {
+    width: 100px; height: 50px; top: 8%; left: -10%; animation: floatCloud1 35s infinite linear; animation-delay: 0s;
+}
+.cloud-2 {
+    width: 120px; height: 60px; top: 25%; right: -12%; animation: floatCloud2 45s infinite linear; animation-delay: 5s;
+}
+.cloud-3 {
+    width: 90px; height: 45px; top: 55%; left: -15%; animation: floatCloud1 40s infinite linear reverse; animation-delay: 10s;
+}
+.cloud-4 {
+    width: 130px; height: 65px; top: 75%; right: -10%; animation: floatCloud2 50s infinite linear reverse; animation-delay: 15s;
+}
+.cloud-5 {
+    width: 110px; height: 55px; top: 15%; right: -8%; animation: floatCloud2 38s infinite linear; animation-delay: 20s;
+}
+
+@keyframes floatCloud1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(100vw + 30%)); }
+}
+
+@keyframes floatCloud2 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100vw - 30%)); }
+}
+
+
+.container {
+    max-width: 1200px; /* Increased max-width for horizontal content */
+    width: 95%;
+    padding: 30px;
+    background-color: #A3C2D1; /* Container background is blue */
+    color: white; /* Default text color inside container is white */
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin: 20px auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* --- Restyled H1 (Main Title) back to Pacifico and larger size --- */
+header h1 {
+    color: white; /* Sky Film text white */
+    font-family: 'Pacifico', cursive; /* Restored Pacifico font */
+    font-size: 4em; /* Restored larger size */
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+/* --- End Restyled H1 --- */
+
+header img {
+    max-width: 220px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+/* --- Styled ONLY H2 to use Comfortaa and have the same size --- */
+h2 { /* Removed h1 from this selector */
+    font-family: 'Comfortaa', sans-serif; /* Apply Comfortaa font */
+    font-size: 2em; /* Set the common font size */
+    color: white; /* Ensure text color is white */
+    font-weight: 700; /* Use bold weight from Comfortaa */
+    margin-top: 0; /* Reset default top margin */
+    margin-bottom: 20px; /* Keep specific bottom margin for h2 */
+}
+/* --- End Styled H2 Only --- */
+
+
+main {
+    /* --- Horizontal Layout --- */
+    display: flex;
+    flex-direction: row; /* Arrange sections horizontally */
+    flex-wrap: wrap; /* Allow sections to wrap if not enough space */
+    justify-content: center; /* Center sections horizontally */
+    align-items: flex-start; /* Align sections to the top */
+    width: 100%;
+    gap: 40px; /* Space between horizontal sections */
+    /* --- End Horizontal Layout --- */
+}
+
+.camera-section {
+    text-align: center;
+    margin-bottom: 30px;
+    width: auto;
+    max-width: 400px;
+    /* Adjust flex properties to manage size in horizontal layout */
+    flex: 1 1 350px; /* Allow to grow/shrink, base size 350px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white; /* Text white on blue background of container */
+}
+
+/* camera-section h2 is now styled by the h2 rule */
+
+.camera-container {
+    width: 100%;
+    max-width: 550px;
+    margin: 30px auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    position: relative; /* Added relative positioning for countdown overlay */
+}
+
+#videoElement {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Styled Countdown Overlay */
+#countdown {
+    position: absolute; /* Position over the video */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for the element's own size */
+    font-size: 8em; /* Larger font size */
+    font-weight: bold;
+    color: white; /* White text for visibility on video */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow for better readability */
+    display: none; /* Hidden by default, shown by script */
+    z-index: 10; /* Ensure it's above the video */
+}
+
+/* Styled Buttons (Take Photo and Save) */
+#takePhotoButton,
+.save-button {
+    display: inline-block;
+    padding: 16px 35px;
+    background-color: white; /* White background */
+    color: #A3C2D1; /* Text color matches background blue */
+    font-family: 'Comfortaa', sans-serif; /* Cute non-cursive font */
+    border: none;
+    border-radius: 25px; /* More rounded corners */
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 700; /* Comfortaa has bold weight */
+    transition: background-color 0.3s ease, opacity 0.3s ease; /* Added transition for opacity */
+    margin-top: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+    text-decoration: none; /* Remove underline from save button if it becomes a link */
+}
+
+#takePhotoButton:hover:not(:disabled),
+.save-button:hover:not(:disabled) {
+    background-color: #f0f0f0; /* Slightly darker white on hover */
+}
+
+#takePhotoButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6; /* Dim when disabled */
+}
+
+.save-button {
+     display: none; /* Still hidden by default, shown by script */
+     font-weight: 700; /* Ensure save button also uses bold Comfortaa */
+     font-family: 'Comfortaa', sans-serif; /* Apply font specifically to save button too */
+}
+
+
+.frame-options {
+    text-align: center;
+    margin-bottom: 30px;
+    width: auto;
+    flex: 0 0 auto; /* Don't grow, don't shrink, size based on content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     color: white; /* Text white on blue background of container */
+}
+
+/* frame-options h2 is now styled by the h2 rule */
+
+
+.frame-choices {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.frame-thumbnail-label {
+    display: block;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px;
+    transition: border-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.frame-thumbnail-label input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.frame-thumbnail-label img {
+    display: block;
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.frame-thumbnail-label input[type="radio"]:focus + img {
+    outline: 2px auto -webkit-focus-ring-color;
+}
+
+.frame-thumbnail-label:has(input[type="radio"]:checked) {
+    border-color: #007bff;
+}
+
+
+#photoDisplay {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: auto;
+    flex: 1 1 350px; /* Allow to grow/shrink, base size 350px */
+    max-width: 450px; /* Limit the max width of the photo display section */
+    display: flex; /* Ensure it's a flex container */
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center;
+     color: white; /* Text white on blue background of container */
+}
+
+/* photoDisplay h2 is now styled by the h2 rule */
+
+#capturedImageContainer {
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px; /* Fixed display width */
+    /* height: auto; /* Let height be determined by content/aspect ratio - Removed with aspect-ratio */ */
+    max-width: 100%;
+    margin: 30px auto;
+    position: relative; /* Set as positioning context for absolute children */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+     /* Removed flex-shrink and flex-basis */
+     /* flex-shrink: 0; */
+     /* flex-basis: 300px; */
+     /* Added aspect-ratio to force 2:3 proportion */
+     aspect-ratio: 1200 / 1800; /* Or 2 / 3 */
+}
+
+/* Styles for Photo Slots (Photos will be behind the frame) */
+.photo-slot {
+    position: absolute; /* Position relative to #capturedImageContainer */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* top, left, width, height set by JavaScript */
+    z-index: 1; /* Place below the frame image */
+}
+
+.photo-slot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styles for Frame Image (PNG overlay) */
+#frameImage {
+    position: absolute; /* Position relative to #capturedImageContainer */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover the container */
+    height: 100%; /* Cover the container */
+    display: block; /* Ensure it behaves as a block element */
+    object-fit: contain; /* Scale image to fit without cropping */
+    pointer-events: none; /* Allow clicks to pass through the frame image */
+    z-index: 2; /* Place above the photo slots */
+}
+
+footer {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    margin-top: 30px;
+    color: white; /* Footer text white on blue */
+    font-size: 0.9em;
+    padding-bottom: 0;
+    width: 100%;
+}

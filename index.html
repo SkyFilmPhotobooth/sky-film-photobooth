@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Film</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+
+    <div class="background-clouds">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-5"></div>
+        </div>
+
+    <div class="container">
+        <header>
+            <h1>Sky Film Photobooth</h1>
+            </header>
+
+        <main>
+            <section class="camera-section">
+                <h2>Take Your Photo</h2>
+                <div class="camera-container">
+                    <video id="videoElement" autoplay></video>
+                     <div id="countdown" class="countdown">3</div>
+                </div>
+                <button id="takePhotoButton">Take Photo</button>
+            </section>
+
+            <section class="frame-options">
+                <h2>Choose Frame Design</h2>
+                <div class="frame-choices">
+                    <label class="frame-thumbnail-label">
+                        <input type="radio" name="frameDesign" value="Photoism Blue Full.png" checked>
+                        <img src="images/Photoism Blue Full_thumb.png" alt="Photoism Blue Frame Thumbnail">
+                    </label>
+
+                    <label class="frame-thumbnail-label">
+                        <input type="radio" name="frameDesign" value="Cinnamoroll (1).png">
+                        <img src="images/Cinnamoroll_thumb.png" alt="Cinnamoroll Frame Thumbnail">
+                    </label>
+
+                    <label class="frame-thumbnail-label">
+                        <input type="radio" name="frameDesign" value="MyMelody (1).png">
+                        <img src="images/MyMelody_thumb.png" alt="My Melody Frame Thumbnail">
+                    </label>
+                    </div>
+            </section>
+
+            <section id="photoDisplay">
+                <h2>Your Captured Photo</h2>
+                <div id="capturedImageContainer">
+                    <div class="photo-slot photo-slot-1"></div>
+                    <div class="photo-slot photo-slot-2"></div>
+                    <div class="photo-slot photo-slot-3"></div>
+                    <div class="photo-slot photo-slot-4"></div>
+                    <img id="frameImage" src="" alt="Photo Booth Frame">
+                    </div>
+                <button id="saveStripButton" class="save-button">Save Photo Strip</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Sky Film Photobooth</p>
+            </footer>
+    </div>
+
+    <canvas id="canvasElement" width="640" height="480" style="display: none;"></canvas>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
